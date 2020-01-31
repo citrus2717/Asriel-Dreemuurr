@@ -29,9 +29,9 @@ handler = WebhookHandler(os.environ['Channel_Secret'])
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = ImageSendMessage(
-    original_content_url='https://i.imgur.com/Zwm1F0Y.jpg',
-    preview_image_url='https://i.imgur.com/nrwlrKJ.jpg'
+    message = ImageSendMessage( 
+            original_content_url = 'https://i.imgur.com/M0ibtusl.jpg',
+            preview_image_url = 'https://i.imgur.com/M0ibtusm.jpg'
 )
 line_bot_api.reply_message(event.reply_token, message)
     
