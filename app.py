@@ -7,9 +7,6 @@ Created on Fri Jan 31 23:38:52 2020
 from flask import Flask, request, abort
 import os
 
-from Checker import Receipt_Numbers
-from Utilities_Functions import filter_inputs, parse_results
-
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -17,7 +14,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
 )
 
 app = Flask(__name__)
