@@ -29,10 +29,11 @@ handler = WebhookHandler(os.environ['Channel_Secret'])
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = ImageSendMessage( 
-            original_content_url = 'https://i.imgur.com/M0ibtusl.jpg',
-            preview_image_url = 'https://i.imgur.com/M0ibtusm.jpg'
-)
+    message = {
+            "type": "sticker",
+            "packageId": "1",
+            "stickerId": "1"
+}
 line_bot_api.reply_message(event.reply_token, message)
     
 @app.route("/callback", methods=['POST'])
