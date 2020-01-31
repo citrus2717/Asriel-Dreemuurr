@@ -22,10 +22,18 @@ app = Flask(__name__)
 line_bot_api = LineBotApi(os.environ['Channel_Access_Token'])
 handler = WebhookHandler(os.environ['Channel_Secret'])
 
+#@handler.add(MessageEvent, message=TextMessage)
+#def handle_message(event):
+#    message = TextSendMessage(text='Hello, world')
+#    line_bot_api.reply_message(event.reply_token, message)
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TextSendMessage(text='Hello, world')
-    line_bot_api.reply_message(event.reply_token, message)
+    message = ImageSendMessage(
+    original_content_url='https://i.imgur.com/Zwm1F0Y.jpg',
+    preview_image_url='https://i.imgur.com/nrwlrKJ.jpg'
+)
+line_bot_api.reply_message(event.reply_token, message)
     
 @app.route("/callback", methods=['POST'])
 def callback():
