@@ -26,3 +26,6 @@ handler = WebhookHandler(os.environ['Channel_Secret'])
 def handle_message(event):
     message = TextSendMessage(text='Hello, world')
     line_bot_api.reply_message(event.reply_token, message)
+    
+if __name__ == "__main__":
+    app.run()
