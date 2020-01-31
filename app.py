@@ -30,9 +30,24 @@ handler = WebhookHandler(os.environ['Channel_Secret'])
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = {
-            "type": "sticker",
-            "packageId": "1",
-            "stickerId": "1"
+  "type": "template",
+  "altText": "在不支援顯示樣板的地方顯示的文字",
+  "template": {
+    "type": "confirm",
+    "text": "標題文字",
+    "actions": [
+      {
+        "type": "message",
+        "label": "第一個按鈕",
+        "text": "1"
+      },
+      {
+        "type": "message",
+        "label": "第二個按鈕",
+        "text": "2"
+      }
+    ]
+  }
 }
 line_bot_api.reply_message(event.reply_token, message)
     
