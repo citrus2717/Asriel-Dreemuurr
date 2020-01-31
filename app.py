@@ -22,34 +22,12 @@ app = Flask(__name__)
 line_bot_api = LineBotApi(os.environ['Channel_Access_Token'])
 handler = WebhookHandler(os.environ['Channel_Secret'])
 
-#@handler.add(MessageEvent, message=TextMessage)
-#def handle_message(event):
-#    message = TextSendMessage(text='Hello, world')
-#    line_bot_api.reply_message(event.reply_token, message)
-
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = {
-  "type": "template",
-  "altText": "在不支援顯示樣板的地方顯示的文字",
-  "template": {
-    "type": "confirm",
-    "text": "標題文字",
-    "actions": [
-      {
-        "type": "message",
-        "label": "第一個按鈕",
-        "text": "1"
-      },
-      {
-        "type": "message",
-        "label": "第二個按鈕",
-        "text": "2"
-      }
-    ]
-  }
-}
-line_bot_api.reply_message(event.reply_token, message)
+    message = TextSendMessage(text='Hello, world')
+    line_bot_api.reply_message(event.reply_token, message)
+
+
     
 @app.route("/callback", methods=['POST'])
 def callback():
